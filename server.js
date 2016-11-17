@@ -1,0 +1,10 @@
+var express = require('express');
+var bodyParser = require('body-parser');
+var appConfig = require('./config/appConfig');
+var app = express();
+app.use(bodyParser());
+var router = express.Router();
+require('./controllers/userController')(router);
+app.use('/api', router);
+app.listen(appConfig.port);
+console.log("Server was started.");
